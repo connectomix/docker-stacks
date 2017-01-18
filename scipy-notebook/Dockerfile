@@ -40,6 +40,7 @@ RUN conda install --quiet --yes \
     'h5py=2.6*' \
     'vincent=0.4.*' \
     'beautifulsoup4=4.5.*' \
+    'networkx' \
     'xlrd'  && \
     conda remove --quiet --yes --force qt pyqt && \
     conda clean -tipsy
@@ -75,6 +76,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'pyzmq' \
     'vincent=0.4.*' \
     'beautifulsoup4=4.5.*' \
+    'networkx' \
     'xlrd' && \
     conda remove -n python2 --quiet --yes --force qt pyqt && \
     conda clean -tipsy
@@ -101,4 +103,6 @@ RUN pip install kernda --no-cache && \
     kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json && \
     pip uninstall kernda -y
 
+RUN pip install ndio
+RUN pip3 install ndio
 USER $NB_USER
